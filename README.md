@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nova Store
+
+A modern e-commerce application built with Next.js 15 (App Router) and Express.js.
+
+## Features
+
+- **Responsive Landing Page**: 7 themed sections including Hero, Features, Testimonials.
+- **Product Catalog**: Fetch and display items from a MongoDB database.
+- **Product Details**: Dedicated page for full product information.
+- **Authentication**: Secure login system using NextAuth.js.
+- **Admin Dashboard**: Protected route to add new products to the store.
+- **Interactive UI**: Toast notifications, hover effects, and modern styling.
+
+## Technologies Used
+
+- **Frontend**: Next.js 16, Tailwind CSS 4, Lucide React, Sonner (Toasts)
+- **Backend**: Express.js, MongoDB (Native Driver), CORS, Dotenv
+- **Authentication**: NextAuth.js (Credentials Provider)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js installed
+- MongoDB connection string
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1.  **Clone the repository**
+2.  **Setup Server**
+    ```bash
+    cd nova-store-server
+    npm install
+    # Create .env file with:
+    # MONGODB_URI=your_mongodb_connection_string
+    # PORT=5000
+    npm start
+    ```
+    
+3.  **Setup Client**
+    ```bash
+    cd nova-store-client
+    npm install
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Route Summary
 
-## Learn More
+- `/`: Home Page (Public)
+- `/items`: Product Listing (Public)
+- `/items/:id`: Product Details (Public)
+- `/login`: Admin Login (Public)
+- `/admin/add-item`: Add New Product (Protected)
 
-To learn more about Next.js, take a look at the following resources:
+## Login Credentials (Mock)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Email**: `admin@novastore.com`
+- **Password**: `password123`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+- **Frontend**: Ready for Vercel.
+- **Backend**: Ready for Render/Railway.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built by Hadi Al Hamza.

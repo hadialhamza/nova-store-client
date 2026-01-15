@@ -45,13 +45,23 @@ export const metadata = {
   },
 };
 
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
+import { Toaster } from "sonner";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jakarta.variable}`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jakarta.variable} min-h-screen flex flex-col`}
       >
-        {children}
+        <AuthProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
