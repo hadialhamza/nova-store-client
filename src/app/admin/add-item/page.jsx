@@ -32,6 +32,16 @@ export default function AddItemPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    // Basic URL validation
+    try {
+      new URL(formData.image);
+    } catch (_) {
+      toast.error("Please enter a valid Image URL");
+      setLoading(false);
+      return;
+    }
+
     try {
       await api.post("/products", {
         ...formData,
@@ -116,13 +126,17 @@ export default function AddItemPage() {
         <div className="space-y-2">
           <label className="text-sm font-medium">Image URL</label>
           <input
+            type="url"
             name="image"
             value={formData.image}
             onChange={handleChange}
             className="w-full px-4 py-2 rounded-lg bg-background border focus:ring-2 focus:ring-primary focus:outline-none"
-            placeholder="https://..."
+            placeholder="https://example.com/image.jpg"
             required
           />
+          <p className="text-xs text-muted-foreground">
+            Must be a valid URL (e.g. https://...)
+          </p>
         </div>
 
         <div className="space-y-2">

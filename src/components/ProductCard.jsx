@@ -45,15 +45,14 @@ const ProductCard = ({ product }) => {
 
       <CardFooter className="p-4 flex items-center justify-between border-t bg-muted/20">
         <p className="text-xl font-bold text-primary">${product.price}</p>
-        <Link href={`/items/${product._id}`}>
-          <Button
-            size="sm"
-            variant="default"
-            className="shadow-lg shadow-primary/20"
-          >
-            View Details
-          </Button>
-        </Link>
+        <Button
+          asChild
+          size="sm"
+          variant="default"
+          className="shadow-lg shadow-primary/20"
+        >
+          <Link href={`/items/${product._id}`}>View Details</Link>
+        </Button>
       </CardFooter>
     </Card>
   );
