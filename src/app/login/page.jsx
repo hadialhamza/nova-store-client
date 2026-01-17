@@ -4,11 +4,11 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail } from "lucide-react";
+import { toast } from "sonner";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -20,8 +20,9 @@ export default function LoginPage() {
     });
 
     if (res?.error) {
-      setError("Invalid email or password");
+      toast.error("Invalid email or password");
     } else {
+      toast.success("Login successful!");
       router.push("/items");
       router.refresh();
     }
@@ -69,8 +70,6 @@ export default function LoginPage() {
               />
             </div>
           </div>
-
-          {error && <p className="text-red-500 text-sm">{error}</p>}
 
           <button
             type="submit"

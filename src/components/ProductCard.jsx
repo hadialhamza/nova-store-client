@@ -1,39 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="border rounded-xl overflow-hidden hover:shadow-lg transition-shadow bg-card flex flex-col h-full">
-      <div className="aspect-video relative bg-muted">
+    <Card className="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 group ring-1 ring-border/50">
+      <div className="aspect-video relative overflow-hidden bg-muted">
         <Image
           src={product.image}
           alt={product.name}
           width={300}
           height={200}
-          className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
+          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
         />
-      </div>
-      <div className="p-4 flex flex-col flex-1 gap-2">
-        <div className="flex justify-between items-start">
-          <h3 className="font-bold text-lg line-clamp-1">{product.name}</h3>
-          <span className="text-xs font-medium px-2 py-1 bg-secondary rounded-full">
+        <div className="absolute top-2 right-2">
+          <Badge
+            variant="secondary"
+            className="backdrop-blur-md bg-white/80 dark:bg-black/60 shadow-sm border-0"
+          >
             {product.category}
-          </span>
+          </Badge>
         </div>
-        <p className="text-muted-foreground text-sm line-clamp-2 flex-1">
+      </div>
+
+      <CardHeader className="p-4 pb-2">
+        <CardTitle className="font-bold text-lg line-clamp-1 group-hover:text-primary transition-colors">
+          {product.name}
+        </CardTitle>
+        <CardDescription className="line-clamp-2 text-sm">
           {product.description}
-        </p>
-        <div className="flex items-center justify-between mt-4">
-          <p className="text-primary font-bold text-lg">${product.price}</p>
-          <Link
-            href={`/items/${product._id}`}
-            className="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:bg-primary/90 transition-colors"
+        </CardDescription>
+      </CardHeader>
+
+      <CardContent className="p-4 pt-1 flex-1"></CardContent>
+
+      <CardFooter className="p-4 flex items-center justify-between border-t bg-muted/20">
+        <p className="text-xl font-bold text-primary">${product.price}</p>
+        <Link href={`/items/${product._id}`}>
+          <Button
+            size="sm"
+            variant="default"
+            className="shadow-lg shadow-primary/20"
           >
             View Details
-          </Link>
-        </div>
-      </div>
-    </div>
+          </Button>
+        </Link>
+      </CardFooter>
+    </Card>
   );
 };
 

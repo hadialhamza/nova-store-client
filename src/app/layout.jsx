@@ -48,7 +48,7 @@ export const metadata = {
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export default function RootLayout({ children }) {
