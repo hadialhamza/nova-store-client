@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:5000";
+const baseURL = "https://nova-store-server.vercel.app";
 
 const api = axios.create({
   baseURL,

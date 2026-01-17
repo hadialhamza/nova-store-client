@@ -1,49 +1,82 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag, Menu, User } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import Logo from "./logo/Logo";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "./ModeToggle";
+
+const NavItems = ({ onLinkClick }) => (
+  <>
+    <Link
+      href="/"
+      className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+      onClick={onLinkClick}
+    >
+      Home
+    </Link>
+    <Link
+      href="/items"
+      className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+      onClick={onLinkClick}
+    >
+      Items
+    </Link>
+    <Link
+      href="/login"
+      className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+      onClick={onLinkClick}
+    >
+      Login
+    </Link>
+  </>
+);
 
 const Navbar = () => {
-  return (
-    <nav className="border-b bg-background sticky top-0 z-50">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-bold text-xl text-primary"
-        >
-          <ShoppingBag className="w-6 h-6" />
-          <span>NovaStore</span>
-        </Link>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/"
-            className="text-sm font-medium hover:text-primary transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/items"
-            className="text-sm font-medium hover:text-primary transition-colors"
-          >
-            Items
-          </Link>
-          <Link
-            href="/login"
-            className="text-sm font-medium hover:text-primary transition-colors"
-          >
-            Login
-          </Link>
-          <Link
-            href="/admin/add-item"
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-medium hover:bg-primary/90 transition-colors"
-          >
-            Add Item
-          </Link>
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
+  return (
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/60">
+      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+        <Logo />
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
+          <NavItems onLinkClick={closeMenu} />
+          <div className="flex items-center gap-4">
+            <ModeToggle />
+            <Link href="/admin/add-item">
+              <Button>Add Item</Button>
+            </Link>
+          </div>
         </div>
 
-        <button className="md:hidden p-2">
-          <Menu className="w-6 h-6" />
-        </button>
+        {/* Mobile Toggle */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ModeToggle />
+          <button
+            onClick={toggleMenu}
+            className="p-2 text-muted-foreground hover:text-foreground focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-background border-b shadow-lg flex flex-col items-center gap-4 py-6 animate-in slide-in-from-top-2">
+          <NavItems onLinkClick={closeMenu} />
+          <Link href="/admin/add-item" onClick={closeMenu}>
+            <Button>Add Item</Button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
