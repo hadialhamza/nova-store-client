@@ -57,7 +57,7 @@ export default function Newsletter() {
 
               {/* Right Side: Form */}
               <div className="w-full max-w-md relative z-10">
-                <div className="bg-card/50 backdrop-blur-md border border-border p-6 rounded-3xl shadow-sm">
+                <div className="bg-card/50 border border-border p-6 rounded-3xl shadow-sm">
                   <form
                     onSubmit={(e) => e.preventDefault()}
                     className="flex flex-col gap-3"

@@ -151,13 +151,13 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-
+            {/* 
             <Link
               href=""
               className="inline-flex items-center justify-center rounded-full border bg-background px-5 py-2 text-sm font-semibold hover:bg-muted transition"
             >
               Contact Support →
-            </Link>
+            </Link> */}
           </div>
         </div>
 

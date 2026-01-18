@@ -16,7 +16,7 @@ async function getFeaturedProducts() {
       return [];
     }
     const products = await res.json();
-    return products.slice(0, 6);
+    return products.slice(0, 8);
   } catch (error) {
     // console.error("Failed to fetch products:", error);
     return [];

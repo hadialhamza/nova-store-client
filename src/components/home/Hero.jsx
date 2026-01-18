@@ -77,7 +77,7 @@ export default function Hero({ products = [] }) {
             </div>
 
             <div className="grid grid-cols-3 gap-3 md:gap-4 pt-4 max-w-lg">
-              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/50 shadow-sm backdrop-blur-sm hover:border-indigo-500/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/80 shadow-sm hover:border-indigo-500/30 transition-colors">
                 <div className="flex items-center gap-2 mb-1 text-indigo-600 dark:text-indigo-400">
                   <Users className="w-4 h-4" />
                   <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-70">
@@ -86,7 +86,7 @@ export default function Hero({ products = [] }) {
                 </div>
                 <h4 className="text-xl md:text-2xl font-bold">50k+</h4>
               </div>
-              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/50 shadow-sm backdrop-blur-sm hover:border-purple-500/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/80 shadow-sm hover:border-purple-500/30 transition-colors">
                 <div className="flex items-center gap-2 mb-1 text-purple-600 dark:text-purple-400">
                   <LayoutGrid className="w-4 h-4" />
                   <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-70">
@@ -95,7 +95,7 @@ export default function Hero({ products = [] }) {
                 </div>
                 <h4 className="text-xl md:text-2xl font-bold">200+</h4>
               </div>
-              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/50 shadow-sm backdrop-blur-sm hover:border-amber-500/30 transition-colors">
+              <div className="p-3 md:p-4 rounded-xl border border-border/60 bg-background/80 shadow-sm hover:border-amber-500/30 transition-colors">
                 <div className="flex items-center gap-2 mb-1 text-amber-500">
                   <Star className="w-4 h-4 fill-current" />
                   <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider opacity-70">
@@ -133,7 +133,7 @@ export default function Hero({ products = [] }) {
                       <div className="flex justify-between items-start z-10">
                         <Badge
                           variant="secondary"
-                          className="bg-background/80 backdrop-blur shadow-sm"
+                          className="bg-background/80 shadow-sm"
                         >
                           {product.category || "In Stock"}
                         </Badge>
@@ -164,8 +164,8 @@ export default function Hero({ products = [] }) {
                         </div>
                       </div>
 
-                      {/* Info Card - Distinct Background            {/* Floating Card 1 */}
-                      <div className="mt-auto bg-card/90 dark:bg-card/80 bg-gradient-subtle backdrop-blur-md p-5 rounded-2xl border border-border shadow-md">
+                      {/* Info Card - Distinct Background */}
+                      <div className="mt-auto bg-card/90 dark:bg-card/80 bg-gradient-subtle p-5 rounded-2xl border border-border shadow-md">
                         <div className="flex justify-between items-end gap-2">
                           <div>
                             <h3 className="text-lg font-bold text-foreground line-clamp-1">
@@ -222,12 +222,19 @@ export default function Hero({ products = [] }) {
               color: "text-orange-600 bg-orange-100 dark:bg-orange-900/20",
             },
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className={`p-2.5 rounded-full ${item.color}`}>
+            <div
+              key={i}
+              className="group flex items-center gap-4 p-4 rounded-2xl border border-border/50 transition-all duration-300 bg-gradient-subtle shadow-sm hover:-translate-y-1"
+            >
+              <div
+                className={`p-3 rounded-full ${item.color} group-hover:scale-110 transition-transform duration-300`}
+              >
                 <item.icon className="w-5 h-5" />
               </div>
-              <div className="text-sm">
-                <p className="font-bold">{item.title}</p>
+              <div className="flex-1">
+                <p className="font-bold text-sm text-foreground">
+                  {item.title}
+                </p>
                 <p className="text-muted-foreground text-xs">{item.desc}</p>
               </div>
             </div>

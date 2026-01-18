@@ -53,7 +53,7 @@ export default function ContactCTA() {
               </Link>
 
               <Link href="/faq">
-                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-background/50 backdrop-blur border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/30">
+                <Button variant="outline" size="lg" className="rounded-full px-8 h-12 text-base bg-background/90 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-50 dark:hover:bg-indigo-900/30">
                   Visit FAQ Center
                 </Button>
               </Link>

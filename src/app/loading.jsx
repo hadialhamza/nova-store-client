@@ -4,7 +4,7 @@ import Logo from "@/components/logo/Logo";
 
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-background/90 backdrop-blur-2xl transition-all duration-500">
+    <div className="fixed inset-0 z-100 flex flex-col items-center justify-center bg-background/90 transition-all duration-500">
       {/* BACKGROUND AMBIENCE */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Top Blob */}
@@ -35,7 +35,7 @@ export default function Loading() {
             <div className="absolute inset-0 bg-indigo-500/30 blur-2xl rounded-full animate-pulse" />
 
             {/* Glass Container */}
-            <div className="relative flex items-center justify-center w-32 h-32 bg-background/40 backdrop-blur-xl rounded-full border border-white/10 shadow-2xl ring-1 ring-white/5">
+            <div className="relative flex items-center justify-center w-32 h-32 bg-background/40 rounded-full border border-white/10 shadow-2xl ring-1 ring-white/5">
               <div className="scale-125 transition-transform duration-1000 animate-[pulse_3s_ease-in-out_infinite]">
                 <Logo compact={true} iconSize={52} priority={true} />
               </div>

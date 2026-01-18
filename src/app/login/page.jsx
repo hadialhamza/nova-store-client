@@ -54,7 +54,7 @@ export default function LoginPage() {
     <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-background py-10 px-4">
       {/* 2. Main Login Card */}
       <div className="w-full max-w-105 relative animate-in fade-in zoom-in-95 duration-500">
-        <div className="relative bg-background/60 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
+        <div className="relative bg-background/80 border border-white/20 dark:border-white/10 rounded-3xl p-8 shadow-2xl">
           {/* Header */}
           <div className="flex flex-col items-center text-center mb-8">
             <div className="h-12 w-12 bg-linear-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-500/20">
@@ -157,7 +157,7 @@ export default function LoginPage() {
                   In...
                 </>
               ) : (
-                "Sign In to Dashboard"
+                "Sign In"
               )}
             </Button>
           </form>

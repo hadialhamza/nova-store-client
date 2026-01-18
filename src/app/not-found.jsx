@@ -21,8 +21,8 @@ export default function NotFound() {
           </h1>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full animate-bounce duration-2000" />
-              <div className="relative h-24 w-24 md:h-32 md:w-32 rounded-3xl bg-background/50 border border-white/10 shadow-2xl backdrop-blur-md flex items-center justify-center">
+              <div className="absolute inset-0 bg-primary/20 blur rounded-full animate-bounce duration-2000" />
+              <div className="relative h-24 w-24 md:h-32 md:w-32 rounded-3xl bg-background/50 border border-white/10 shadow-md flex items-center justify-center">
                 <Ghost className="h-12 w-12 md:h-16 md:w-16 text-primary animate-pulse" />
               </div>
             </div>

@@ -11,7 +11,6 @@ import {
   BadgeCheck,
   Heart,
 } from "lucide-react";
-
 import { baseURL } from "@/lib/axios";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

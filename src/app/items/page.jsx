@@ -29,49 +29,67 @@ export default async function ItemsPage() {
       <div className="relative overflow-hidden rounded-3xl border bg-muted/10 p-7 sm:p-10">
         <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-transparent" />
 
-        <div className="relative space-y-6">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="space-y-3">
+        <div className="relative space-y-8">
+          {/* Header Row: Back Link - Title - Info Card */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            {/* Left: Back Link */}
+            <div className="flex-1 flex justify-start">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Back to home"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Back to Home
               </Link>
+            </div>
 
-              <div className="inline-flex items-center gap-2 rounded-full border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
-                <Sparkles className="h-4 w-4 text-primary" />
+            {/* Center: Badge & Title */}
+            <div className="flex-2 flex flex-col items-center text-center space-y-2">
+              <div className="inline-flex items-center gap-2 rounded-full border bg-background/80 px-3 py-1 text-xs font-medium text-muted-foreground shadow-sm">
+                <Sparkles className="h-3.5 w-3.5 text-primary" />
                 Curated collection
               </div>
 
-              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              <h1 className="text-3xl font-bold tracking-tight sm:text-4xl bg-clip-text text-transparent bg-linear-to-b from-foreground to-foreground/70">
                 All Products
               </h1>
-
-              <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-                Explore our full catalog of premium items. Clean browsing, clear
-                pricing, and a smooth checkout experience.
-              </p>
             </div>
 
-            {/* quick info card */}
-            <div className="rounded-2xl border bg-background p-4 sm:min-w-55">
-              <p className="text-xs text-muted-foreground">Available</p>
-              <p className="mt-1 text-2xl font-bold text-primary">
-                {products?.length ?? 0}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">products</p>
+            {/* Right: Info Card */}
+            <div className="flex-1 flex justify-end">
+              <div className="hidden sm:block rounded-2xl border bg-background px-4 py-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex flex-col text-right">
+                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">
+                      Available
+                    </span>
+                    <span className="text-sm font-bold text-foreground">
+                      {products?.length ?? 0} Products
+                    </span>
+                  </div>
+                  <div className="h-8 w-px bg-border" />
+                  <Sparkles className="h-4 w-4 text-primary" />
+                </div>
+              </div>
             </div>
           </div>
 
+          {/* Description (Centered below header) */}
+          <div className="flex justify-center">
+            <p className="max-w-xl text-center text-muted-foreground leading-relaxed sm:text-lg">
+              Explore our full catalog of premium items. Clean browsing, clear
+              pricing, and a smooth checkout experience.
+            </p>
+          </div>
+
           {/* Category chips */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {CATEGORY_CHIPS.map((c) => (
               <button
                 key={c}
                 type="button"
-                className="rounded-full border bg-background px-3 py-1 text-xs font-medium text-foreground/80 hover:bg-muted/30"
+                className="rounded-full border bg-background px-4 py-1.5 text-sm font-medium text-foreground/80 hover:bg-muted/50 transition-colors hover:scale-105 active:scale-95"
               >
                 {c}
               </button>
@@ -79,15 +97,15 @@ export default async function ItemsPage() {
           </div>
 
           {/* Filters row placeholder */}
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="inline-flex items-center gap-2 rounded-2xl border bg-background px-4 py-3 text-sm text-muted-foreground">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
+            <div className="inline-flex items-center gap-2 rounded-2xl border bg-background px-4 py-2.5 text-sm text-muted-foreground hover:bg-muted/30 transition-colors cursor-pointer">
               <SlidersHorizontal className="h-4 w-4 text-primary" />
-              Filters and sorting will appear here (optional)
+              Filters and sorting
             </div>
 
-            <div className="inline-flex items-center gap-2 rounded-2xl border bg-background px-4 py-3 text-sm text-muted-foreground">
-              <Info className="h-4 w-4 text-primary" />
-              Tip: click a product to view details
+            <div className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-foreground">
+              <Info className="h-3.5 w-3.5 text-primary" />
+              Tip: Click a product for details
             </div>
           </div>
         </div>

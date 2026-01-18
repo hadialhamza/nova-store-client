@@ -68,7 +68,7 @@ function FeatureCard({ feature, index }) {
   return (
     <div
       className={cn(
-        "group relative p-6 md:p-8 rounded-3xl border border-border bg-card/50 bg-gradient-subtle backdrop-blur-sm transition-all duration-300",
+        "group relative p-6 md:p-8 rounded-3xl border border-border bg-card/80 bg-gradient-subtle transition-all duration-300",
         "hover:-translate-y-1 hover:shadow-lg hover:bg-card",
         feature.hoverBorder,
       )}

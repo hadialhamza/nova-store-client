@@ -100,7 +100,7 @@ export default function AddItemPage() {
           <div>
             <Link
               href="/items"
-              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-2 transition-colors"
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-5 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-1" /> Back to Inventory
             </Link>
@@ -124,7 +124,7 @@ export default function AddItemPage() {
           <div className="lg:col-span-2 space-y-6">
             <form
               onSubmit={handleSubmit}
-              className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 shadow-sm space-y-6"
+              className="bg-card/50 border border-border/50 rounded-2xl p-6 md:p-8 shadow-sm space-y-6"
             >
               {/* Product Name */}
               <div className="space-y-2">
@@ -297,7 +297,7 @@ export default function AddItemPage() {
 
                   {/* Category Badge */}
                   <div className="absolute top-3 left-3">
-                    <span className="px-2 py-1 rounded-md bg-background/80 backdrop-blur text-xs font-bold shadow-sm">
+                    <span className="px-2 py-1 rounded-md bg-background/80 text-xs font-bold shadow-sm">
                       {formData.category}
                     </span>
                   </div>
