@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, Eye, ShoppingCart, Star } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -12,47 +13,103 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const ProductCard = ({ product }) => {
+  const { _id, name, description, price, category, image } = product || {};
+
   return (
-    <Card className="flex flex-col h-full overflow-hidden hover:shadow-xl transition-all duration-300 group ring-1 ring-border/50">
-      <div className="aspect-video relative overflow-hidden bg-muted">
+    <Card className="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-background/60 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+      {/* Top image */}
+      <div className="relative aspect-16/10 overflow-hidden bg-muted">
         <Image
-          src={product.image}
-          alt={product.name}
-          width={300}
-          height={200}
-          className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+          src={image}
+          alt={name || "Product"}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.06]"
+          priority={false}
         />
-        <div className="absolute top-2 right-2">
-          <Badge
+
+        {/* Category chip */}
+        {category ? (
+          <div className="absolute left-3 top-3">
+            <Badge className="border-0 bg-background/90 text-foreground">
+              {category}
+            </Badge>
+          </div>
+        ) : null}
+
+        {/* Quick view button */}
+        <div className="absolute right-3 top-3 hidden md:block">
+          <Button
+            asChild
+            size="icon"
             variant="secondary"
-            className="backdrop-blur-md bg-white/80 dark:bg-black/60 shadow-sm border-0"
+            className="h-9 w-9 rounded-full border bg-background/90 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 translate-y-1"
           >
-            {product.category}
-          </Badge>
+            <Link aria-label="View details" href={`/items/${_id}`}>
+              <Eye className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+
+        <div className="absolute bottom-3 left-3">
+          <div className="inline-flex items-center gap-1 rounded-full border bg-background/90 px-2.5 py-1 text-xs text-foreground">
+            <Star className="h-3.5 w-3.5 text-primary" />
+            <span className="font-medium">Top pick</span>
+          </div>
         </div>
       </div>
 
-      <CardHeader className="p-4 pb-2">
-        <CardTitle className="font-bold text-lg line-clamp-1 group-hover:text-primary transition-colors">
-          {product.name}
+      {/* Content */}
+      <CardHeader className="space-y-2 p-4 pb-2">
+        <CardTitle className="line-clamp-1 text-base font-semibold tracking-tight transition-colors group-hover:text-primary">
+          {name}
         </CardTitle>
-        <CardDescription className="line-clamp-2 text-sm">
-          {product.description}
+
+        <CardDescription className="line-clamp-2 text-sm leading-relaxed">
+          {description}
         </CardDescription>
       </CardHeader>
 
-      <CardContent className="p-4 pt-1 flex-1"></CardContent>
+      <CardContent className="flex-1 px-4 pb-4">
+        <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
+          <span className="rounded-full border bg-muted/30 px-2 py-1">
+            Fast delivery
+          </span>
+          <span className="rounded-full border bg-muted/30 px-2 py-1">
+            Secure checkout
+          </span>
+        </div>
+      </CardContent>
 
-      <CardFooter className="p-4 flex items-center justify-between border-t bg-muted/20">
-        <p className="text-xl font-bold text-primary">${product.price}</p>
-        <Button
-          asChild
-          size="sm"
-          variant="default"
-          className="shadow-lg shadow-primary/20"
-        >
-          <Link href={`/items/${product._id}`}>View Details</Link>
-        </Button>
+      {/* Footer */}
+      <CardFooter className="flex items-center justify-between gap-3 border-t bg-muted/20 p-4">
+        <div className="min-w-0">
+          <p className="text-xs text-muted-foreground">Price</p>
+          <p className="text-lg font-bold text-primary">
+            ${Number(price ?? 0).toFixed(2)}
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="icon"
+            className="h-10 w-10 rounded-full"
+            aria-label="Add to cart"
+          >
+            <ShoppingCart className="h-4 w-4" />
+          </Button>
+
+          <Button asChild className="rounded-full">
+            <Link
+              href={`/items/${_id}`}
+              className="inline-flex items-center gap-2"
+            >
+              View Details <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
