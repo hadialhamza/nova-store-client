@@ -1,4 +1,4 @@
-import { ProductCardSkeleton } from "@/components/ProductCard";
+import { ProductCardSkeleton } from "@/components/shared/ProductCard";
 
 export default function ItemsLoading() {
   return (
@@ -14,7 +14,7 @@ export default function ItemsLoading() {
             </div>
 
             {/* Center: Badge & Title */}
-            <div className="flex-[2] flex flex-col items-center gap-3">
+            <div className="flex-2 flex flex-col items-center gap-3">
               {/* Badge */}
               <div className="h-7 w-36 bg-muted animate-pulse rounded-full" />
               {/* Title */}

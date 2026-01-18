@@ -1,5 +1,5 @@
 import { BadgeCheck, Quote, Star } from "lucide-react";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../shared/SectionHeader";
 
 const TESTIMONIALS = [
   {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Lock, Mail, Loader2, Check, Copy } from "lucide-react";
 import { toast } from "sonner";
@@ -14,6 +14,8 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [copied, setCopied] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,7 @@ export default function LoginPage() {
         toast.error("Invalid credentials. Please try again.");
       } else {
         toast.success("Welcome back! Redirecting...");
-        router.push("/items");
+        router.push(callbackUrl);
         router.refresh();
       }
     } catch (error) {

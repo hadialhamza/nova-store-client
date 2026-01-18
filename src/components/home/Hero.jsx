@@ -27,11 +27,11 @@ const BG_COLORS = [
 
 export default function Hero({ products = [] }) {
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-background/50">
+    <section className="relative w-full py-10 md:py-24 overflow-hidden bg-background/50">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 lg:items-stretch min-h-125">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 lg:items-stretch min-h-[auto] lg:min-h-125">
           {/* LEFT CONTENT */}
-          <div className="flex flex-col justify-center space-y-8 py-8 md:py-12">
+          <div className="flex flex-col justify-center space-y-6 md:space-y-8 py-4 md:py-12">
             <div className="flex items-center gap-2">
               <Badge
                 variant="outline"
@@ -42,7 +42,7 @@ export default function Hero({ products = [] }) {
               </Badge>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.1]">
               Explore the <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
                 Future of Lifestyle
@@ -108,7 +108,7 @@ export default function Hero({ products = [] }) {
           </div>
 
           {/* RIGHT CONTENT: SWIPER */}
-          <div className="relative h-full min-h-112.5 w-full">
+          <div className="relative h-[400px] sm:h-[500px] md:h-full lg:min-h-112.5 w-full">
             <Swiper
               effect={"creative"}
               creativeEffect={{
@@ -152,7 +152,7 @@ export default function Hero({ products = [] }) {
                         {/* Circle Decorations */}
                         <div className="absolute w-64 h-64 bg-white/20 dark:bg-white/5 rounded-full blur-3xl -z-10" />
 
-                        <div className="relative w-full h-62.5 md:h-full max-h-87.5">
+                        <div className="relative w-full h-full max-h-[250px] sm:max-h-[300px] md:max-h-full">
                           <Image
                             src={product.image}
                             alt={product.name}
@@ -195,7 +195,7 @@ export default function Hero({ products = [] }) {
         </div>
 
         {/* BOTTOM FEATURE CARDS */}
-        <div className="mt-16 pt-8 border-t border-border/50 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-12 md:mt-16 pt-8 border-t border-border/50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {[
             {
               icon: ShieldCheck,

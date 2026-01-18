@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SlidersHorizontal, Sparkles, ArrowLeft, Info } from "lucide-react";
 
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/shared/ProductCard";
 import { baseURL } from "@/lib/axios";
 
 async function getProducts() {
@@ -19,6 +19,13 @@ async function getProducts() {
 }
 
 const CATEGORY_CHIPS = ["Electronics", "Fashion", "Accessories", "Lifestyle"];
+
+export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "All Products",
+  description: "Browse our curated collection of premium products.",
+};
 
 export default async function ItemsPage() {
   const products = await getProducts();

@@ -32,6 +32,25 @@ function formatPrice(price) {
   return `$${n.toFixed(2)}`;
 }
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const product = await getProduct(id);
+
+  if (!product) {
+    return {
+      title: "Product Not Found",
+    };
+  }
+
+  return {
+    title: product.name,
+    description: product.description?.slice(0, 160) || "View product details.",
+    openGraph: {
+      images: [product.image],
+    },
+  };
+}
+
 export default async function ItemDetailsPage({ params }) {
   const { id } = await params;
   const product = await getProduct(id);

@@ -7,7 +7,7 @@ import {
   Truck,
   RefreshCcw,
 } from "lucide-react";
-import Logo from "./logo/Logo";
+import Logo from "../shared/Logo";
 
 const Footer = () => {
   const year = new Date().getFullYear();

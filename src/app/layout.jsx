@@ -45,11 +45,11 @@ export const metadata = {
   },
 };
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import AuthProvider from "@/components/AuthProvider";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import AuthProvider from "@/providers/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export default function RootLayout({ children }) {
   return (

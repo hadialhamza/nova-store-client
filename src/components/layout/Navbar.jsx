@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import { Bell, Menu, ShoppingCart, User } from "lucide-react";
-import Logo from "./logo/Logo";
+import Logo from "../shared/Logo";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./ModeToggle";
 import {
@@ -125,7 +125,7 @@ const UserMenu = () => {
         <DropdownMenuItem
           onClick={async () => {
             // redirect after sign out
-            await signOut({ callbackUrl: "/login" });
+            await signOut({ callbackUrl: "/" });
           }}
           className="text-destructive focus:text-destructive"
         >

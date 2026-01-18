@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
-import ProductCard, { ProductCardSkeleton } from "@/components/ProductCard";
-import SectionHeader from "../SectionHeader";
+import ProductCard, { ProductCardSkeleton } from "@/components/shared/ProductCard";
+import SectionHeader from "../shared/SectionHeader";
 
 export default function FeaturedCollection({ featuredProducts = [] }) {
   const hasProducts = featuredProducts?.length > 0;

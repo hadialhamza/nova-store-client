@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MessageCircle, ArrowRight, HelpCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 export default function ContactCTA() {
@@ -31,8 +31,8 @@ export default function ContactCTA() {
             <div className="flex justify-center items-center -space-x-3 pb-4">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className={`w-10 h-10 rounded-full border-2 border-background flex items-center justify-center text-xs font-bold text-white shadow-sm overflow-hidden bg-linear-to-br ${i === 1 ? "from-blue-500 to-indigo-500" :
-                    i === 2 ? "from-purple-500 to-pink-500" :
-                      i === 3 ? "from-emerald-500 to-teal-500" : "from-orange-500 to-red-500"
+                  i === 2 ? "from-purple-500 to-pink-500" :
+                    i === 3 ? "from-emerald-500 to-teal-500" : "from-orange-500 to-red-500"
                   }`}>
                   {/* Mock User Initials or Image */}
                   <span className="opacity-90">U{i}</span>

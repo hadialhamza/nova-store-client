@@ -7,7 +7,7 @@ import {
   Gift,
   ArrowUpRight,
 } from "lucide-react";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../shared/SectionHeader";
 import { cn } from "@/lib/utils";
 
 const FEATURES = [

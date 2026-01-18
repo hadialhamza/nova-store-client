@@ -38,7 +38,7 @@ export default function AddItemPage() {
   // Auth Protection
   useEffect(() => {
     if (status === "unauthenticated") {
-      router.push("/login");
+      router.push("/login?callbackUrl=/admin/add-item");
     }
   }, [status, router]);
 

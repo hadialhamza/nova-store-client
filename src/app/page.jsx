@@ -23,6 +23,10 @@ async function getFeaturedProducts() {
   }
 }
 
+export const metadata = {
+  title: "Home",
+};
+
 export default async function Home() {
   const featuredProducts = await getFeaturedProducts();
 

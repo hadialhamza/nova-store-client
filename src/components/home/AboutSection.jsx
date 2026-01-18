@@ -8,7 +8,7 @@ import {
   Sparkles,
   Truck,
 } from "lucide-react";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../shared/SectionHeader";
 
 const HIGHLIGHTS = [
   {

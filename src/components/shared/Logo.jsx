@@ -29,7 +29,7 @@ export default function Logo({
       aria-label="Nova Store Home"
       className={cn(
         "inline-flex items-center hover:opacity-90 transition-opacity",
-        className
+        className,
       )}
     >
       {/* Light mode icon */}
@@ -39,7 +39,8 @@ export default function Logo({
         width={iconSize}
         height={iconSize}
         priority={priority}
-        className="block dark:hidden shrink-0 h-auto w-auto -mt-"
+        className="block dark:hidden shrink-0"
+        style={{ width: "auto", height: "auto" }}
       />
 
       {/* Dark mode icon */}
@@ -49,14 +50,15 @@ export default function Logo({
         width={iconSize}
         height={iconSize}
         priority={priority}
-        className="hidden dark:block shrink-0 h-auto w-auto -mt-"
+        className="hidden dark:block shrink-0"
+        style={{ width: "auto", height: "auto" }}
       />
 
       {!compact && (
         <span
           className={cn(
             "text-2xl tracking-tighter flex items-baseline -ml-1.5",
-            textClassName
+            textClassName,
           )}
         >
           <span className={cn(fontNova.className, "font-bold text-primary")}>

@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/components/logo/Logo";
+import Logo from "@/components/shared/Logo";
 
 export default function Loading() {
   return (

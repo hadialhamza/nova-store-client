@@ -1,8 +1,12 @@
-"use client";
+
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Ghost, Home, ArrowLeft, Search } from "lucide-react";
+
+export const metadata = {
+  title: "Page Not Found",
+};
 
 export default function NotFound() {
   return (
