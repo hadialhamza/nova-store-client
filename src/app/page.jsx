@@ -27,9 +27,9 @@ export default async function Home() {
   const featuredProducts = await getFeaturedProducts();
 
   return (
-    <div className="flex flex-col gap-16 pb-10">
+    <div className="flex flex-col pt-0 pb-10">
       {/* Hero Section */}
-      <Hero />
+      <Hero products={featuredProducts.slice(0, 3)} />
 
       {/* Featured Items */}
       <FeaturedCollection featuredProducts={featuredProducts} />

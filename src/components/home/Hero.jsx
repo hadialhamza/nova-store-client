@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -19,9 +18,6 @@ import { Autoplay, Pagination, EffectCreative } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-creative";
-import api from "@/lib/axios";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const BG_COLORS = [
   "bg-blue-50/80 dark:bg-blue-950/20",
@@ -29,85 +25,13 @@ const BG_COLORS = [
   "bg-emerald-50/80 dark:bg-emerald-950/20",
 ];
 
-const HeroSkeleton = () => (
-  <section className="relative w-full py-12 md:py-20 lg:py-28 overflow-hidden bg-background/50">
-    <div className="container mx-auto px-4 md:px-8">
-      <div className="grid lg:grid-cols-2 gap-8 lg:items-center min-h-125">
-        {/* Left Skeleton */}
-        <div className="space-y-6 md:space-y-8 py-8">
-          <div className="w-32 h-6 md:h-8 rounded-full bg-muted animate-pulse" />
-          <div className="space-y-3">
-            <div className="w-3/4 h-10 md:h-16 rounded-xl bg-muted animate-pulse" />
-            <div className="w-1/2 h-10 md:h-16 rounded-xl bg-muted animate-pulse" />
-          </div>
-          <div className="space-y-2 max-w-lg">
-            <div className="w-full h-4 rounded bg-muted animate-pulse" />
-            <div className="w-5/6 h-4 rounded bg-muted animate-pulse" />
-            <div className="w-4/6 h-4 rounded bg-muted animate-pulse" />
-          </div>
-          <div className="flex gap-4 pt-2">
-            <div className="w-32 md:w-40 h-12 rounded-full bg-muted animate-pulse" />
-            <div className="w-32 md:w-40 h-12 rounded-full bg-muted animate-pulse" />
-          </div>
-          <div className="grid grid-cols-3 gap-4 pt-4 max-w-lg">
-            <div className="h-20 rounded-xl bg-muted animate-pulse" />
-            <div className="h-20 rounded-xl bg-muted animate-pulse" />
-            <div className="h-20 rounded-xl bg-muted animate-pulse" />
-          </div>
-        </div>
-
-        {/* Right Skeleton */}
-        <div className="h-112.5-full rounded-3xl bg-muted animate-pulse border border-border/50" />
-      </div>
-    </div>
-  </section>
-);
-
-export default function Hero() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Init AOS
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-out-cubic",
-    });
-
-    const fetchProducts = async () => {
-      try {
-        const { data } = await api.get("/products");
-        // Take top 3 products
-        setProducts(data?.slice(0, 3) || []);
-      } catch (error) {
-        console.error("Failed to fetch hero products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  if (loading) {
-    return <HeroSkeleton />;
-  }
-
+export default function Hero({ products = [] }) {
   return (
-    <section className="relative w-full py-12 md:py-20 lg:py-28 overflow-hidden bg-background/50">
-      {/* Subtle Background Blobs (Optional) */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/5 blur-[100px] rounded-full" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-500/5 blur-[100px] rounded-full" />
-      </div>
-
+    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-background/50">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:items-stretch min-h-125">
           {/* LEFT CONTENT */}
-          <div
-            className="flex flex-col justify-center space-y-8 py-8"
-            data-aos="fade-right"
-          >
+          <div className="flex flex-col justify-center space-y-8 py-8 md:py-12">
             <div className="flex items-center gap-2">
               <Badge
                 variant="outline"
@@ -140,6 +64,7 @@ export default function Hero() {
                   Shop Now <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
+
               <Link href="/about">
                 <Button
                   variant="outline"
@@ -183,11 +108,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT CONTENT: SWIPER */}
-          <div
-            className="relative h-full min-h-112.5 w-full"
-            data-aos="fade-left"
-            data-aos-delay="200"
-          >
+          <div className="relative h-full min-h-112.5 w-full">
             <Swiper
               effect={"creative"}
               creativeEffect={{
@@ -243,8 +164,8 @@ export default function Hero() {
                         </div>
                       </div>
 
-                      {/* Info Card - Distinct Background */}
-                      <div className="mt-auto bg-card/90 dark:bg-card/80 backdrop-blur-md p-5 rounded-2xl border border-border shadow-md">
+                      {/* Info Card - Distinct Background            {/* Floating Card 1 */}
+                      <div className="mt-auto bg-card/90 dark:bg-card/80 bg-gradient-subtle backdrop-blur-md p-5 rounded-2xl border border-border shadow-md">
                         <div className="flex justify-between items-end gap-2">
                           <div>
                             <h3 className="text-lg font-bold text-foreground line-clamp-1">
@@ -274,11 +195,7 @@ export default function Hero() {
         </div>
 
         {/* BOTTOM FEATURE CARDS */}
-        <div
-          className="mt-16 pt-8 border-t border-border/50 grid grid-cols-2 md:grid-cols-4 gap-6"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
+        <div className="mt-16 pt-8 border-t border-border/50 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             {
               icon: ShieldCheck,

@@ -7,7 +7,7 @@ export default function FeaturedCollection({ featuredProducts = [] }) {
   const hasProducts = featuredProducts?.length > 0;
 
   return (
-    <section className="container mx-auto px-4 py-14 sm:py-16">
+    <section className="container mx-auto px-4 py-16 md:py-24">
       {/* Header row */}
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <SectionHeader
@@ -33,11 +33,11 @@ export default function FeaturedCollection({ featuredProducts = [] }) {
       <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {hasProducts
           ? featuredProducts.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))
+            <ProductCard key={product._id} product={product} />
+          ))
           : Array.from({ length: 8 }).map((_, i) => (
-              <ProductCardSkeleton key={i} />
-            ))}
+            <ProductCardSkeleton key={i} />
+          ))}
       </div>
     </section>
   );

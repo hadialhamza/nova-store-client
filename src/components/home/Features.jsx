@@ -68,7 +68,7 @@ function FeatureCard({ feature, index }) {
   return (
     <div
       className={cn(
-        "group relative p-6 md:p-8 rounded-3xl border border-border bg-card/50 backdrop-blur-sm transition-all duration-300",
+        "group relative p-6 md:p-8 rounded-3xl border border-border bg-card/50 bg-gradient-subtle backdrop-blur-sm transition-all duration-300",
         "hover:-translate-y-1 hover:shadow-lg hover:bg-card",
         feature.hoverBorder,
       )}
@@ -109,7 +109,7 @@ function FeatureCard({ feature, index }) {
 
 export default function Features() {
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-8">
         {/* Section Header */}
         <div className="mb-16">

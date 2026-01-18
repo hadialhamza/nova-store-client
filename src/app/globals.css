@@ -180,7 +180,9 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 
   /* Headings */
@@ -200,5 +202,11 @@
   /* brand-colored text selection */
   ::selection {
     background-color: oklch(0.55 0.2 270 / 0.25);
+  }
+}
+
+@layer utilities {
+  .bg-gradient-subtle {
+    @apply bg-linear-to-br from-primary/10 via-transparent to-transparent;
   }
 }
