@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Eye, ShoppingCart, Star } from "lucide-react";
+import {
+  ArrowRight,
+  Eye,
+  ShoppingCart,
+  Tag,
+  Truck,
+  ShieldCheck,
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -31,7 +38,8 @@ const ProductCard = ({ product }) => {
         {/* Category chip */}
         {category ? (
           <div className="absolute left-3 top-3">
-            <Badge className="border-0 bg-background/90 text-foreground">
+            <Badge className="border-0 bg-background/70 text-foreground flex items-center gap-1.5 px-2.5">
+              <Tag className="w-3 h-3 text-primary" />
               {category}
             </Badge>
           </div>
@@ -50,13 +58,6 @@ const ProductCard = ({ product }) => {
             </Link>
           </Button>
         </div>
-
-        <div className="absolute bottom-3 left-3">
-          <div className="inline-flex items-center gap-1 rounded-full border bg-background/90 px-2.5 py-1 text-xs text-foreground">
-            <Star className="h-3.5 w-3.5 text-primary" />
-            <span className="font-medium">Top pick</span>
-          </div>
-        </div>
       </div>
 
       {/* Content */}
@@ -72,17 +73,19 @@ const ProductCard = ({ product }) => {
 
       <CardContent className="flex-1 px-4 pb-4">
         <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
-          <span className="rounded-full border bg-muted/30 px-2 py-1">
+          <span className="inline-flex items-center gap-1.5 rounded-full border bg-muted/30 px-2 py-1">
+            <Truck className="w-3.5 h-3.5 text-blue-500" />
             Fast delivery
           </span>
-          <span className="rounded-full border bg-muted/30 px-2 py-1">
+          <span className="inline-flex items-center gap-1.5 rounded-full border bg-muted/30 px-2 py-1">
+            <ShieldCheck className="w-3.5 h-3.5 text-green-500" />
             Secure checkout
           </span>
         </div>
       </CardContent>
 
       {/* Footer */}
-      <CardFooter className="flex items-center justify-between gap-3 border-t bg-muted/20 p-4">
+      <CardFooter className="flex items-end justify-between gap-3 border-t bg-muted/20 p-4">
         <div className="min-w-0">
           <p className="text-xs text-muted-foreground">Price</p>
           <p className="text-lg font-bold text-primary">
@@ -116,3 +119,29 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
+export const ProductCardSkeleton = () => {
+  return (
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-background/60 shadow-sm">
+      <div className="relative aspect-16/10 overflow-hidden bg-muted animate-pulse" />
+      <div className="space-y-3 p-4">
+        <div className="h-5 w-2/3 rounded-lg bg-muted animate-pulse" />
+        <div className="h-4 w-full rounded-lg bg-muted animate-pulse" />
+        <div className="flex items-center justify-between gap-2 pt-2">
+          <div className="h-4 w-1/3 rounded-lg bg-muted animate-pulse" />
+          <div className="h-4 w-1/3 rounded-lg bg-muted animate-pulse" />
+        </div>
+      </div>
+      <div className="mt-auto flex items-center justify-between p-4 pt-0">
+        <div className="space-y-1">
+          <div className="h-3 w-8 rounded-full bg-muted animate-pulse" />
+          <div className="h-6 w-16 rounded-lg bg-muted animate-pulse" />
+        </div>
+        <div className="flex gap-2">
+          <div className="h-10 w-10 rounded-full bg-muted animate-pulse" />
+          <div className="h-10 w-24 rounded-full bg-muted animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+};

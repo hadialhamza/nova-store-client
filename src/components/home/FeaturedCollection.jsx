@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
-import ProductCard from "@/components/ProductCard";
+import ProductCard, { ProductCardSkeleton } from "@/components/ProductCard";
 import SectionHeader from "../SectionHeader";
 
 export default function FeaturedCollection({ featuredProducts = [] }) {
@@ -30,33 +30,14 @@ export default function FeaturedCollection({ featuredProducts = [] }) {
       <div className="mt-8 h-0.5 w-full bg-linear-to-r from-transparent via-border to-transparent" />
 
       {/* Grid */}
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {hasProducts ? (
-          featuredProducts.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))
-        ) : (
-          <div className="col-span-full">
-            <div className="rounded-2xl border border-dashed bg-muted/10 p-10 text-center">
-              <p className="text-sm font-semibold">Loading featured items...</p>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Please wait a moment while we fetch the latest picks.
-              </p>
-
-              {/* skeleton */}
-              <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="rounded-2xl border bg-background p-4">
-                    <div className="aspect-16/10 rounded-xl bg-muted/30" />
-                    <div className="mt-4 h-4 w-3/4 rounded bg-muted/30" />
-                    <div className="mt-2 h-4 w-1/2 rounded bg-muted/30" />
-                    <div className="mt-4 h-10 w-full rounded-full bg-muted/30" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {hasProducts
+          ? featuredProducts.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))
+          : Array.from({ length: 8 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
       </div>
     </section>
   );
